@@ -1,0 +1,22 @@
+%{
+#include <stdio.h>
+
+// Matching the prototype declaration for yywrap
+int yywrap(void) {
+    return 1;
+}
+%}
+
+%%
+
+[A-Z]+    { printf("Capital word: %s\n", yytext); }
+
+.         { /* Ignore all other characters */ }
+
+%%
+
+int main()
+{
+    yylex();
+    return 0;
+}
